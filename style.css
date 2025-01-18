@@ -1,0 +1,46 @@
+body {
+  background-color: #1e1e2f;
+  color: #f0f0ff;
+}
+
+.card {
+  background-color: #2b2b3d;
+  border: none;
+}
+
+.folder-item {
+  background-color: #3c3c4f;
+  display: flex;
+  align-items: center;
+}
+
+.file-item {
+  background-color: #3c3c4f;
+  display: flex;
+  align-items: center;
+}
+
+.folder-item img,
+.file-item img {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.btn-primary {
+  background-color: #5a4ef7;
+  border-color: #5a4ef7;
+}
+
+.btn-primary:hover {
+  background-color: #463de6;
+}
+
+.btn-secondary {
+  background-color: #4a4a61;
+  border-color: #4a4a61;
+}
+
+.btn-secondary:hover {
+  background-color: #3b3b50;
+}

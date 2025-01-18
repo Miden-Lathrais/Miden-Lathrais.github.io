@@ -1,0 +1,83 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emel File Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="text-center mb-4">Emel File Manager</h1>
+    <div class="card shadow p-4">
+      <!-- Path Navigation -->
+      <div id="pathNavigation" class="mb-4 d-flex justify-content-between align-items-center">
+        <span id="currentPath">Root</span>
+        <button id="backButton" class="btn btn-secondary btn-sm" onclick="navigateBack()" disabled>Back</button>
+      </div>
+
+      <!-- Folder Creation -->
+      <div class="mb-4">
+        <div class="d-flex">
+          <input type="text" id="folderName" placeholder="Folder name" class="form-control me-2" />
+          <button class="btn btn-primary" id="createFolder">Create Folder</button>
+        </div>
+      </div>
+
+      <!-- File Upload -->
+      <form id="uploadForm" class="mb-4">
+        <div class="mb-3">
+          <label for="fileInput" class="form-label">Choose a file</label>
+          <input type="file" class="form-control" id="fileInput" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </form>
+
+      <!-- File and Folder List -->
+      <div id="fileList">
+        <h2 class="mb-3">Files & Folders</h2>
+        <!-- File/Folder items will populate here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- File Options Modal -->
+  <div class="modal fade" id="fileOptionsModal" tabindex="-1" aria-labelledby="fileOptionsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="fileOptionsModalLabel">File Options</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="fileOptionsForm">
+            <div class="mb-3">
+              <label for="newFileName" class="form-label">Rename</label>
+              <input type="text" id="newFileName" class="form-control" placeholder="New file name">
+            </div>
+            <div class="mb-3">
+              <label for="moveFilePath" class="form-label">Move to Folder</label>
+              <input type="text" id="moveFilePath" class="form-control" placeholder="Destination folder">
+            </div>
+            <button type="button" id="deleteFileButton" class="btn btn-danger w-100 mb-2">Delete</button>
+            <button type="submit" class="btn btn-primary w-100">Apply Changes</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="frontend.js"></script>
+</body>
+</html>
